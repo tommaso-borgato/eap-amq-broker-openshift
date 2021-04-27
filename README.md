@@ -1,3 +1,7 @@
+# Intro 
+
+This repo contains the instructions to deploy and EAP POD connected to an AMQ POD over SSL;
+
 # AMQ Broker - setup
 
 - create-ssh.sh
