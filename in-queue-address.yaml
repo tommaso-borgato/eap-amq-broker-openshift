@@ -1,0 +1,9 @@
+apiVersion: broker.amq.io/v2alpha2
+kind: ActiveMQArtemisAddress
+metadata:
+  name: in-queue-address
+  namespace: reproducer
+spec:
+  addressName: inQueue
+  queueName: inQueue
+  routingType: anycast

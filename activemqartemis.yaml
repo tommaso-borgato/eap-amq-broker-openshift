@@ -1,0 +1,42 @@
+apiVersion: broker.amq.io/v2alpha4
+kind: ActiveMQArtemis
+metadata:
+  name: amq-broker
+  namespace: reproducer
+spec:
+  acceptors:
+  - anycastPrefix: jms.queue.
+    connectionsAllowed: 10
+    expose: true
+    multicastPrefix: jms.topic.
+    name: all
+    port: 61617
+    protocols: all
+    sslEnabled: true
+    sslProvider: JDK
+    sslSecret: amq-broker-ssl-secret
+    verifyHost: false
+  connectors:
+  - enabledCipherSuites: SSL_RSA_WITH_RC4_128_SHA,SSL_DH_anon_WITH_3DES_EDE_CBC_SHA
+    enabledProtocols: TLSv1,TLSv1.1,TLSv1.2
+    expose: true
+    host: localhost
+    name: connector0
+    needClientAuth: true
+    port: 22222
+    sslEnabled: false
+    sslProvider: JDK
+    verifyHost: true
+    wantClientAuth: true
+  console:
+    expose: true
+  deploymentPlan:
+    image: registry.redhat.io/amq7/amq-broker:7.7
+    journalType: nio
+    messageMigration: false
+    persistenceEnabled: false
+    requireLogin: false
+    size: 2
+  upgrades:
+    enabled: false
+    minor: false

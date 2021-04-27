@@ -1,0 +1,76 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  creationTimestamp: "2021-04-27T09:09:49Z"
+  generation: 2
+  labels:
+    xtf.bm/content-hash: eca7c12f17386f889a6b50487d78c20c07566776e39595bba360b5a6c9ffe8e
+  managedFields:
+  - apiVersion: build.openshift.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:xtf.bm/content-hash: {}
+      f:spec:
+        f:output:
+          f:to:
+            .: {}
+            f:kind: {}
+            f:name: {}
+        f:runPolicy: {}
+        f:source:
+          f:binary: {}
+          f:type: {}
+        f:strategy:
+          f:sourceStrategy:
+            .: {}
+            f:env: {}
+            f:forcePull: {}
+            f:from:
+              .: {}
+              f:kind: {}
+              f:name: {}
+          f:type: {}
+    manager: okhttp
+    operation: Update
+    time: "2021-04-27T09:09:49Z"
+  - apiVersion: build.openshift.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:lastVersion: {}
+    manager: openshift-apiserver
+    operation: Update
+    time: "2021-04-27T09:09:50Z"
+  name: eap-jms-eap73
+  namespace: tborgato-bm
+  resourceVersion: "6831191"
+  uid: 4699c707-222e-4a60-b406-661997ce3431
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: eap-jms-eap73:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    binary: {}
+    type: Binary
+  strategy:
+    sourceStrategy:
+      env:
+      - name: DISABLE_EMBEDDED_JMS_BROKER
+        value: "true"
+      forcePull: true
+      from:
+        kind: DockerImage
+        name: registry.redhat.io/jboss-eap-7/eap73-openjdk8-openshift-rhel7:latest
+    type: Source
+  successfulBuildsHistoryLimit: 5
+status:
+  lastVersion: 1
